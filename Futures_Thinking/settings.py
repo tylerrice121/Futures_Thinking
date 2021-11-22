@@ -22,6 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 import os
 from dotenv import load_dotenv, find_dotenv
+
 load_dotenv(find_dotenv())
 
 SECRET_KEY = os.environ['SECRET_KEY']

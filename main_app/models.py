@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 class UserEntries(models.Model):
     title = models.CharField(max_length=100)
@@ -7,6 +7,7 @@ class UserEntries(models.Model):
     img = models.CharField(max_length=250)
     video_url = models.CharField(max_length=250)
     date = models.DateField('Post Date')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.title} was created on {self.date} with the id of {self.id}"
