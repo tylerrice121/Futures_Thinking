@@ -12,4 +12,8 @@ class UserEntries(models.Model):
     def __str__(self):
         return f"{self.title} was created on {self.date} with the id of {self.id}"
 
-    
+class AllEntries(models.Model):
+    user_entries = models.ForeignKey(UserEntries, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"This user entry is from {self.user_entries}"
