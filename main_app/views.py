@@ -11,7 +11,9 @@ def home(request):
 
 def detail(request, pk):
     entry = UserEntries.objects.get(id=pk)
-    return render(request, 'profile/detail.html')
+    return render(request, 'profile/detail.html',{
+        'entry': entry
+    })
 
 class Feed(ListView):
     model = UserEntries
