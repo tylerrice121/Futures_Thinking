@@ -6,11 +6,13 @@
 <div class="cards">
     {% for post in object_list %}
     <div class="card">
-        <div>
-            <h4>{{ post.title }}</h4>
-            <p>{{ post.entry }}</p>
-            <p>Created on {{ post.date }}</p>
-        </div>
+        <a href="{% url 'detail' post.id %}">
+            <div>
+                <h4>{{ post.title }}</h4>
+                <p>{{ post.entry }}</p>
+                <p>Created on {{ post.date }}</p>
+            </div>
+        </a>
     </div>
     {% endfor %}
 </div>
