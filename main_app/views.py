@@ -9,8 +9,12 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 def home(request):
     return render(request, 'home.html')
 
-def feed(request):
-    return render(request, 'feed.html')
+# def feed(request):
+#     return render(request, 'feed.html')
+
+class Feed(ListView):
+    model = UserEntries
+    template_name = 'feed.html'
 
 class Profile(ListView):
     model = UserEntries
