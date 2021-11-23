@@ -26,6 +26,16 @@ nav {
     padding-right: 20px;
 }
 
+.nav-wrapper{
+    display: flex;
+    width: 150px;
+    justify-content: flex-end;
+}
+
+.link {
+    margin-left: 20px;
+}
+
 main{
     flex-grow: 1;
     padding-left: 20px;
