@@ -2,4 +2,15 @@
 {% block content %}
 <h1>Feed Page</h1>
 <p>This is where we will see the AllEntries data</p>
+<div class="cards">
+    {% for post in object_list %}
+    <div class="card">
+        <div>
+            <h4>{{ post.title }}</h4>
+            <p>{{ post.entry }}</p>
+            <p>Created on {{ post.date }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}
