@@ -28,7 +28,7 @@ nav {
 
 .nav-wrapper{
     display: flex;
-    width: 150px;
+    width: 500px;
     justify-content: flex-end;
 }
 
