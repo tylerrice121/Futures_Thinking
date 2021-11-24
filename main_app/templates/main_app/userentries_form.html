@@ -11,8 +11,15 @@
     <table>
         {{ form.as_table }}
     </table>
-    
     <input class="btn blue" type="submit" value="{%if object%} Update Post {%else%} Add Post {%endif%}">
 </form>
-
+<script>
+    const dateEl = document.getElementById('id_date');
+    M.Datepicker.init(dateEl, {
+        format: 'yyyy-mm-dd',
+        defaultDate: new Date(),
+        setDefaultDate: true,
+        autoClose: true
+    });
+</script>
 {% endblock %}

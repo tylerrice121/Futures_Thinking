@@ -7,33 +7,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Futures Thinking</title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'css/style.css' %}"
-    />
-  </head>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</head>
 
   <body>
     <header class="navbar-fixed">
-      <nav>
-        <a href="{% url 'home' %}">Futures Thinking</a>
-        <div class="nav-wrapper">
-          <a href="{% url 'feed' %}" class="link">Feed</a>
-          <a href="{% url 'profile' %}" class="link">Profile</a>
-          <a href="{% url 'entry_create' %}" class="link">Create Post</a>
-          {% if user.is_authenticated %}
-          <a href="{% url 'logout' %}" class="link">Log Out</a>
-          {% else %}
-          <a href="{% url 'login' %}" class="link">Log In</a>
-          <a href="{% url 'signup' %}" class="link">Sign Up</a>
-          {% endif %}
-        </div>
-      </nav>
+        <nav>
+            <div class="nav-wrapper grey darken-3">
+                <ul>
+                    <li>
+                        <a href="{% url 'home' %}">Futures Thinking</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="{% url 'feed' %}" class='link'>Feed</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'profile' %}"class='link'>Profile</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'entry_create' %}"class='link'>Create Post</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'logout' %}" class="link">Log Out</a>
+                    </li>
+                        <a href="{% url 'logout' %}" class="link">Log Out</a>
+                    {% else %}
+                    <li>
+                        <a href="{% url 'login' %}" class="link">Log In</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'signup' %}" class="link">Sign Up</a>
+                    </li>                
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
     </header>
-    <main class="container">{% block content %} {% endblock %}</main>
-    <footer class="page-footer">
-      <div class="right">All Rights Reserved, &copy; 2021 Futures Thinking</div>
+    <main class="container">
+        {% block content %} 
+        {% endblock %}
+    </main>
+    <footer class="page-footer grey darken-3">
+        <div class="right">
+        
+            All Rights Reserved, &copy; <script type="text/javascript">
+                document.write(new Date().getFullYear());
+              </script> Futures Thinking
+        </div>
     </footer>
-  </body>
+</body>
 </html>
