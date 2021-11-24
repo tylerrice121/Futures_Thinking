@@ -9,27 +9,13 @@ body {
     min-height: 100vh;
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    align-items: center;
-    background-color: aliceblue;
-    height: 75px;
-}
 
-nav {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    padding-left: 20px;
-    padding-right: 20px;
-}
+
 
 .nav-wrapper{
+    width: 100%;
     display: flex;
-    width: 500px;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 .link {
@@ -37,6 +23,7 @@ nav {
 }
 
 main{
+
     flex-grow: 1;
     padding-left: 20px;
     padding-right: 20px;
@@ -63,7 +50,6 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid black;
     height: 250px;
     width: 500px;
     padding: 20px;
