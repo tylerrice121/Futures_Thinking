@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Futures Thinking</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
@@ -17,8 +17,12 @@
 <body>
     <header class="navbar-fixed">
         <nav>
-            <a href="{% url 'home' %}">Futures Thinking</a>
-            <div class="nav-wrapper">
+            <div class="nav-wrapper grey darken-3">
+                <ul>
+                    <li>
+                        <a href="{% url 'home' %}">Futures Thinking</a>
+                    </li>
+                </ul>
                 <ul>
                     <li>
                         <a href="{% url 'feed' %}" class='link'>Feed</a>
@@ -37,11 +41,10 @@
         {% block content %} 
         {% endblock %}
     </main>
-    <footer class="page-footer">
+    <footer class="page-footer grey darken-3">
         <div class="right">
             All Rights Reserved, &copy; 2021 Futures Thinking
         </div>
     </footer>
 </body>
-
 </html>
