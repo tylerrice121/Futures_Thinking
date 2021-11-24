@@ -2,11 +2,10 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Futures Thinking</title>
     <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -14,7 +13,7 @@
 
 </head>
 
-<body>
+  <body>
     <header class="navbar-fixed">
         <nav>
             <div class="nav-wrapper grey darken-3">
@@ -33,6 +32,19 @@
                     <li>
                         <a href="{% url 'entry_create' %}"class='link'>Create Post</a>
                     </li>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'logout' %}" class="link">Log Out</a>
+                    </li>
+                        <a href="{% url 'logout' %}" class="link">Log Out</a>
+                    {% else %}
+                    <li>
+                        <a href="{% url 'login' %}" class="link">Log In</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'signup' %}" class="link">Sign Up</a>
+                    </li>                
+                    {% endif %}
                 </ul>
             </div>
         </nav>

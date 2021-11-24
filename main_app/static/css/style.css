@@ -9,9 +9,6 @@ body {
     min-height: 100vh;
 }
 
-
-
-
 .nav-wrapper{
     width: 100%;
     display: flex;
@@ -21,6 +18,7 @@ body {
 .link {
     margin-left: 20px;
 }
+
 
 main{
 
