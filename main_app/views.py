@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from .models import UserEntries, AllEntries
+from .models import UserEntries
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
@@ -41,11 +42,15 @@ class Feed(ListView):
     model = UserEntries
     template_name = 'feed.html'
 
-class Profile(ListView):
+class Profile(LoginRequiredMixin, ListView):
     model = UserEntries
     template_name = 'profile/index.html'
 
-class EntryCreate(CreateView):
+    def get_queryset(self):
+        queryset = UserEntries.objects.filter(user=self.request.user)
+        return queryset
+
+class EntryCreate(LoginRequiredMixin, CreateView):
     model = UserEntries
     fields = ('title', 'entry', 'img', 'video_url', 'date')
 
