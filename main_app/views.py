@@ -2,6 +2,9 @@ from django.shortcuts import render
 from .models import UserEntries, AllEntries
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.shortcuts import render, redirect
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 
 
 # Create your views here.
@@ -14,6 +17,25 @@ def detail(request, pk):
     return render(request, 'profile/detail.html',{
         'entry': entry
     })
+
+def signup(request):
+    error_message = ''
+    if request.method == 'POST':
+        # handle the creation of a new user
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+
+            # this creates a session entry in the database
+            login(request, user)
+            # # and it persists that session sitewide until the user logs out
+            return redirect('feed')
+        else:
+            error_message = 'invalid data - please try again'
+    # this is for GET requests, assuming our user clicked on "signup" from the navbar
+    form = UserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'registration/signup.html', context)
 
 class Feed(ListView):
     model = UserEntries
