@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Futures Thinking</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 </head>
 
@@ -17,9 +19,17 @@
         <nav>
             <a href="{% url 'home' %}">Futures Thinking</a>
             <div class="nav-wrapper">
-                <a href="{% url 'feed' %}" class='link'>Feed</a>
-                <a href="{% url 'profile' %}"class='link'>Profile</a>
-                <a href="{% url 'entry_create' %}"class='link'>Create Post</a>
+                <ul>
+                    <li>
+                        <a href="{% url 'feed' %}" class='link'>Feed</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'profile' %}"class='link'>Profile</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'entry_create' %}"class='link'>Create Post</a>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>
