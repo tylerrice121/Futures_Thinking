@@ -14,7 +14,7 @@ class UserEntries(models.Model):
         return f"{self.title} was created on {self.date} with the id of {self.id}"
 
     def get_absolute_url(self):
-        return reverse("detail", kwargs={"pk": self.pk})
+        return reverse("detail", kwargs={"pk": self.id})
     
 
 class AllEntries(models.Model):

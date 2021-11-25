@@ -58,12 +58,16 @@ class EntryCreate(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-class EntryUpdate(UpdateView):
+class EntryUpdate(LoginRequiredMixin, UpdateView):
   model = UserEntries
   # Let's disallow the renaming of a cat by excluding the name field!
   fields = ['title', 'entry', 'img', 'video_url', 'date']
 
-class EntryDelete(DeleteView):
-  model = UserEntries
-  success_url = '/entry/'
+class EntryDelete(LoginRequiredMixin, DeleteView):
+    model = UserEntries
+    success_url = '/profile/'
+
+    def get_queryset(self):
+        queryset = UserEntries.objects.filter(user=self.request.user)
+        return queryset
   

@@ -16,9 +16,11 @@
         </div>
         <div class="card-action">
             <p>  <img src="{{entry.img}}" alt="{{entry.title}}"></p>
+            {% if request.user == entry.user%}
             <a href="{% url 'entry_update' entry.id %}">Edit</a>
        
             <a href="{% url 'entry_delete' entry.id %}">Delete</a>
+            {% endif %}
           </div>
       </div>
     </div>
