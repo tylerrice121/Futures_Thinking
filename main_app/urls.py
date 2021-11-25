@@ -8,4 +8,6 @@ urlpatterns = [
     path('entry/create/', views.EntryCreate.as_view(), name ='entry_create'),
     path('entry/<int:pk>/', views.detail, name='detail'),
     path('accounts/signup/', views.signup, name='signup'),
+    path('entry/<int:pk>/update/', views.EntryUpdate.as_view(), name='entry_update'),
+    path('entry/<int:pk>/delete/', views.EntryDelete.as_view(), name='entry_delete'),
 ]
