@@ -1,16 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Details</h1>
+<h1>Details of  {{entry.title}}</h1>
 
-<div class="card">
-    <h4>{{entry.title}}</h4>
-    <h4>{{entry.entry}}</h4>
-    <img src="{{entry.img}}" alt="{{entry.title}}">
-    <h4>{{entry.video_url}}</h4>
-    <h4>{{entry.date}}</h4>
-    <h4>{{entry.user}}</h4>
+<div class="row">
+    <div class="col s6 col-offset-3">
+          <p>{{entry.entry}}</p>
 
-</div>
+          <div class="video-container">
+         {{entry.video_url}}
+          </div>
+          <p></p>
+          <p>{{entry.date}}</p>
+          <p>Created by {{entry.user}} in {{entry.date}} </p>
+        </div>
+        <div class="card-action">
+            <p>  <img src="{{entry.img}}" alt="{{entry.title}}"></p>
+            <a href="{% url 'entry_update' entry.id %}">Edit</a>
+       
+            <a href="{% url 'entry_delete' entry.id %}">Delete</a>
+          </div>
+      </div>
+    </div>
+  </div>
 
 {% endblock %}

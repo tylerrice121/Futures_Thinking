@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import UserEntries
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
@@ -57,3 +57,13 @@ class EntryCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+class EntryUpdate(UpdateView):
+  model = UserEntries
+  # Let's disallow the renaming of a cat by excluding the name field!
+  fields = ['title', 'entry', 'img', 'video_url', 'date']
+
+class EntryDelete(DeleteView):
+  model = UserEntries
+  success_url = '/entry/'
+  
