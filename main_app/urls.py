@@ -11,5 +11,5 @@ urlpatterns = [
     path('accounts/signup/', views.signup, name='signup'),
     path('entry/<int:pk>/update/', views.EntryUpdate.as_view(), name='entry_update'),
     path('entry/<int:pk>/delete/', views.EntryDelete.as_view(), name='entry_delete'),
-
+    path('tags/<slug:tags_slug>/', views.TagIndexView.as_view(), name='posts_by_tag'),
 ]

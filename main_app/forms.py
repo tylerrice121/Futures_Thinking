@@ -1,5 +1,21 @@
-from django.forms import ModelForm
+
+   
 from django import forms
+from .models import Entry
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Entry
+        fields = [
+            'title',
+            'entry',
+            'tags',
+            'video',
+           
+    
+        ]
+
+from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
