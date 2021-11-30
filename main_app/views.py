@@ -1,3 +1,4 @@
+from django.db.models.fields import SlugField
 from django.shortcuts import render
 from .models import UserEntries
 from django.views.generic import ListView
@@ -6,6 +7,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+
 
 
 # Create your views here.
@@ -39,6 +43,7 @@ def signup(request):
     return render(request, 'registration/signup.html', context)
 
 class Feed(ListView):
+    queryset = UserEntries.objects.order_by('-date')
     model = UserEntries
     template_name = 'feed.html'
 
@@ -52,16 +57,18 @@ class Profile(LoginRequiredMixin, ListView):
 
 class EntryCreate(LoginRequiredMixin, CreateView):
     model = UserEntries
-    fields = ('title', 'entry', 'img', 'video_url', 'date')
+    fields = ('title', 'entry', 'img', 'video' )
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+  
+
 class EntryUpdate(LoginRequiredMixin, UpdateView):
   model = UserEntries
   # Let's disallow the renaming of a cat by excluding the name field!
-  fields = ['title', 'entry', 'img', 'video_url', 'date']
+  fields = ['title', 'entry', 'img', 'video' ]
 
 class EntryDelete(LoginRequiredMixin, DeleteView):
     model = UserEntries
@@ -70,4 +77,5 @@ class EntryDelete(LoginRequiredMixin, DeleteView):
     def get_queryset(self):
         queryset = UserEntries.objects.filter(user=self.request.user)
         return queryset
+  
   
