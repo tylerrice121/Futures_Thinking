@@ -1,3 +1,4 @@
+from .forms import SignUpForm
 from django.db.models.fields import SlugField
 from django.shortcuts import render
 from .models import UserEntries
@@ -27,7 +28,7 @@ def signup(request):
     error_message = ''
     if request.method == 'POST':
         # handle the creation of a new user
-        form = UserCreationForm(request.POST)
+        form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
 
@@ -38,7 +39,7 @@ def signup(request):
         else:
             error_message = 'invalid data - please try again'
     # this is for GET requests, assuming our user clicked on "signup" from the navbar
-    form = UserCreationForm()
+    form = SignUpForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
