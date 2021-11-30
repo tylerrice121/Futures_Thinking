@@ -1,0 +1,1 @@
+web: gunicorn Futures_Thinking.wsgi

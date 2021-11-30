@@ -8,10 +8,11 @@ from taggit.managers import TaggableManager
 class UserEntries(models.Model):
     title = models.CharField(max_length=100)
     entry = models.CharField(max_length=350)
+
     tags = TaggableManager()
     # slug = models.SlugField(unique=True, max_length=100)
-    img = models.CharField(max_length=250)
-    video = EmbedVideoField(blank=True) # an empty field is fine for me
+    img = models.CharField(max_length=250, blank=True)
+    video = EmbedVideoField(blank=True)
     date = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -29,7 +30,7 @@ class AllEntries(models.Model):
     def __str__(self):
         return f"This user entry is from {self.user_entries}"
 
-
-
-
+# set email for login
+USERNAME_FIELD = 'email'
+REQUIRED_FIELDS = ['username']
 
