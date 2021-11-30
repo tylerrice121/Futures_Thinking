@@ -1,28 +1,30 @@
 {% extends 'base.html' %}
-
-
 {% block content %}
 <h1>Feed Page</h1>
 <p>This is where we will see the AllEntries data</p>
+{% for tag in tags %}
+<a href="{% url 'posts_by_tag' tag.slug %}"> {{ tag.name }}</a>
+{% endfor %}
 <div class="cards">
+   
     {% for post in object_list %}
     <div class="card">
         <a href="{% url 'detail' post.id %}">
             <div>
                 <h4>{{ post.title }}</h4>
-                <p>Created on {{ post.date }} by {{post.user}}</p>
-                <p>{{ post.entry }}</p>
-               
-                
+                <p>Created on {{ post.date }} by {{post.user}}</p></a>
+               <p>{{post.entry}}</p>
+           
+                {% for tag in post.tags.all %}
+              <a href="{% url 'posts_by_tag' tag.slug %}"> {{ tag.name }}</a>
+                {% endfor %}
+         
+             
+             
             </div>
-        </a>
+        
     </div>
     {% endfor %}
-
- 
-
-
-
-
+  
 </div>
 {% endblock %}

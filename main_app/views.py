@@ -7,7 +7,14 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from taggit.models import Tag
 
+
+class TagMixin(object):
+    def get_context_data(self, **kwargs):
+        context =super(TagMixin,self).get_context_data(**kwargs)
+        context['tags'] = Tag.objects.all()
+        return context
 
 
 
@@ -42,11 +49,22 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
-class Feed(ListView):
+class Feed(TagMixin, ListView):
     queryset = UserEntries.objects.order_by('-date')
     model = UserEntries
     template_name = 'feed.html'
+  
 
+class TagIndexView(ListView):
+    # queryset = UserEntries.objects.all()
+    model = UserEntries
+    template_name = 'feed.html'
+    # context_object_name = 'posts'
+   
+    def get_queryset(self):
+       return UserEntries.objects.filter(tags__slug=self.kwargs.get('tags_slug'))
+
+      
 class Profile(LoginRequiredMixin, ListView):
     model = UserEntries
     template_name = 'profile/index.html'
@@ -57,7 +75,7 @@ class Profile(LoginRequiredMixin, ListView):
 
 class EntryCreate(LoginRequiredMixin, CreateView):
     model = UserEntries
-    fields = ('title', 'entry', 'img', 'video' )
+    fields = ('title', 'entry', 'img', 'video', 'tags')
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -68,7 +86,7 @@ class EntryCreate(LoginRequiredMixin, CreateView):
 class EntryUpdate(LoginRequiredMixin, UpdateView):
   model = UserEntries
   # Let's disallow the renaming of a cat by excluding the name field!
-  fields = ['title', 'entry', 'img', 'video' ]
+  fields = ['title', 'entry', 'img', 'video', 'tags'  ]
 
 class EntryDelete(LoginRequiredMixin, DeleteView):
     model = UserEntries
@@ -77,5 +95,4 @@ class EntryDelete(LoginRequiredMixin, DeleteView):
     def get_queryset(self):
         queryset = UserEntries.objects.filter(user=self.request.user)
         return queryset
-  
   
