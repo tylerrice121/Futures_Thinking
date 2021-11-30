@@ -8,7 +8,6 @@ from taggit.managers import TaggableManager
 class UserEntries(models.Model):
     title = models.CharField(max_length=100)
     entry = models.CharField(max_length=350)
-
     tags = TaggableManager()
     # slug = models.SlugField(unique=True, max_length=100)
     img = models.CharField(max_length=250, blank=True)

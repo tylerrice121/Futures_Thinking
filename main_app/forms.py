@@ -1,18 +1,14 @@
-
-   
 from django import forms
-from .models import Entry
+from .models import UserEntries
 
 class PostForm(forms.ModelForm):
     class Meta:
-        model = Entry
+        model = UserEntries
         fields = [
             'title',
             'entry',
             'tags',
             'video',
-           
-    
         ]
 
 from django.forms import ModelForm
