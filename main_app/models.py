@@ -22,3 +22,7 @@ class AllEntries(models.Model):
 
     def __str__(self):
         return f"This user entry is from {self.user_entries}"
+
+# set email for login
+USERNAME_FIELD = 'email'
+REQUIRED_FIELDS = ['username']©
