@@ -9,7 +9,7 @@ class UserEntries(models.Model):
     title = models.CharField(max_length=100)
     entry = models.CharField(max_length=350)
    
-    img = models.CharField(max_length=250)
+    img = models.CharField(max_length=250, blank=True)
     video = EmbedVideoField(blank=True)
     date = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
