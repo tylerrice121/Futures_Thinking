@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'main_app',
     'embed_video',
     'taggit',
-   
 ]
 
 MIDDLEWARE = [
