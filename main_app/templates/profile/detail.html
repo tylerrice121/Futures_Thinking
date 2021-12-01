@@ -15,22 +15,22 @@
 
 <div class="row">
     <div class="col s6 col-offset-3">
-          <p>{{entry.entry}}</p>
+          <p>{{entry.in_the_future}}</p>
           
        
        
-      
+
           
           <p></p>
         
           <p>Posted/updated: {{entry.date}} by {{entry.user}} </p>
     
         <div class="card-action">
-            <p>  <img src="{{entry.img}}" alt="{{entry.title}}"></p>
-         
-            {% video entry.video 'medium' %}
-            {% if request.user == entry.user%}
-       
+            <p>  <img src="{{entry.optional_image}}" alt="{{entry.title_of_that_future}}"></p>
+          
+            {% video entry.optional_video 'medium' %}
+            {% if request.user == entry.user %}
+            
        
             <a href="{% url 'entry_update' entry.id %}">Edit</a>
        
