@@ -76,18 +76,16 @@ class Profile(LoginRequiredMixin, ListView):
 
 class EntryCreate(LoginRequiredMixin, CreateView):
     model = UserEntries
-    fields = ('title', 'entry', 'img', 'video', 'tags')
+    fields = ('in_the_future', 'title_of_that_future', 'tags','optional_image', 'optional_video' )
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-  
-
 class EntryUpdate(LoginRequiredMixin, UpdateView):
   model = UserEntries
   # Let's disallow the renaming of a cat by excluding the name field!
-  fields = ['title', 'entry', 'img', 'video', 'tags'  ]
+  fields = ['in_the_future', 'title_of_that_future', 'tags','optional_image', 'optional_video' ]
 
 class EntryDelete(LoginRequiredMixin, DeleteView):
     model = UserEntries

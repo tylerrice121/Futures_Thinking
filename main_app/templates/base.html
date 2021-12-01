@@ -26,14 +26,14 @@
                 </ul>
                 <ul>
                     <li>
-                        <a href="{% url 'feed' %}" class='link'>Feed</a>
+                        <a href="{% url 'feed' %}" class='link'>Futures</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li>
-                        <a href="{% url 'profile' %}"class='link'>Profile</a>
+                        <a href="{% url 'profile' %}"class='link'>Future Thinker</a>
                     </li>
                     <li>
-                        <a href="{% url 'entry_create' %}"class='link'>Create Post</a>
+                        <a href="{% url 'entry_create' %}"class='link'>Add a Future</a>
                     </li>
                     <li>
                         <a href="{% url 'logout' %}" class="link">Log Out</a>
