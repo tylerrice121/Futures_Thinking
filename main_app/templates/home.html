@@ -2,12 +2,15 @@
 
 {% block title %}Home{% endblock %}
 
+
 {% block content %}
-{% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <p><a href="{% url 'logout' %}">Log Out</a></p>
-{% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">Log In</a>
-{% endif %}
+
+
+<div class="body">
+  <h1>A free space to think about future</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <a href="http://127.0.0.1:8000/accounts/signup/"><button type="button" class="waves-effect waves-light btn row center button-home">Sign Up</button></a> 
+  <br>
+  <img src="https://i.imgur.com/ZJ149rl.png" alt="macbook-image">
+</div>
 {% endblock %}

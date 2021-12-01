@@ -54,3 +54,9 @@ footer {
     margin: 10px;
 }
 
+.button-home {
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
