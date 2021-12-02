@@ -9,6 +9,44 @@ body {
     min-height: 100vh;
 }
 
+.homecontainer{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+.homebody{
+    width: 750px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    line-height: 30px;
+}
+
+.headerhome{
+    margin-bottom: 40px;
+}
+
+.waves-effect{
+    margin-bottom: 0 !important;
+}
+
+
+img{
+    width: 700px;
+    align-self: center;
+}
+
+@media screen and (max-width: 768px){
+    .homecontainer{
+        width: 100%;
+        padding: 0;
+    }
+    img{
+        display: none;
+    }
+}
 .nav-wrapper{
     width: 100%;
     display: flex;
