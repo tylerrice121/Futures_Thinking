@@ -2,18 +2,19 @@
 
 {% block content %}
 
-<h1>My Posts</h1>
+<h1>My Futures</h1>
 <div class="cards">
     {% for post in object_list %}
     <div class="card">
-        <a href="{% url 'detail' post.id %}">
+      
             <div>
-                <h4>{{ post.title }}</h4>
-                <p>{{ post.entry }}</p>
-                <p>Created on {{ post.date }}</p>
+                <a href="{% url 'detail' post.id %}"> <h4>{{ post.title_of_that_future }}</h4>  </a>
+           
+                <p>{{ post.in_the_future }}</p>
+                
+                <p>Created on {{ post.date }} by {{post.user}}</p>
             </div>
-        </a>
-    </div>
+        </div>
     {% endfor %}
 </div>
 {% endblock %}
