@@ -2,44 +2,35 @@
 {% load embed_video_tags %}
 {% block content %}
 
-<div class="cards">
-
-  <div class="card col s4">
+<div class="cards detailcards">
+  <div class="card col s4 detailcard">
     <h4 class="cardTitle">{{entry.title_of_that_future}}</h4>
-    <p>{{entry.date}} by {{entry.user}} </p>
-    <br/>
-    <p class="cardBody">{{entry.in_the_future}}</p>
+    <p style="color: gray; font-size: 12px">{{entry.date}} by {{entry.user}} </p>
+    <p class="cardBody">In the future {{entry.in_the_future}}</p>
     <div class="card-action">
+      {% video entry.optional_video 'small' %}
       {% if request.user == entry.user %}
-      {% comment %} {% video entry.optional_video 'medium' %} {% endcomment %}
       <div class="cardBottom">
-        <a href="{% url 'entry_update' entry.id %}">Edit</a>
-        <a href="{% url 'entry_delete' entry.id %}">Delete</a>
+        <a href="{% url 'entry_update' entry.id %}" style="margin-left: 24px">Edit</a>
+        <a href="{% url 'entry_delete' entry.id %} style="margin-left: 24px"">Delete</a>
       </div>
     </div>
+    {% endif %}
+    <div class="card-action commentsection">
+      <h5>Comments</h5>
+      {% if not entry.comments.all %}
+      No Comments Yet...
+      {% else %}
+      {% for comment in entry.comments.all %}
+      <p style="color: gray; font-size: 12px; margin-bottom: 0px; margin-top: 5px;">
+        {{ comment.name }} - {{ comment.date_added }}
+      </p>
+      {{ comment.body }}
+      {% endfor %}
+      {% endif%}
+      <a href="{% url 'add_comment' entry.pk %}" style="margin-right: 0; margin-top: 10px;">Add comment</a>
+    </div>
   </div>
-  {% endif %}
-  <div class="card col s3">
-    <h4>Comments...</h4>
-    <br />
 
-    {% if not entry.comments.all %}
-    No Comments Yet...
-    <br />
-    {% else %}
-
-    {% for comment in entry.comments.all %}
-    <strong>
-      {{ comment.name }} - {{ comment.date_added }}
-    </strong>
-    <br />
-    {{ comment.body }}
-    <br />
-    {% endfor %}
-    {% endif%}
-    <br />
-    <a href="{% url 'add_comment' entry.pk %}">Add comment</a>
-    <br />
-  </div>
 </div>
 {% endblock %}
