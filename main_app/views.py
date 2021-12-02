@@ -65,8 +65,6 @@ class Feed(TagMixin, ListView):
     template_name = 'feed.html'
 
 
-
-
 class AddProfile(LoginRequiredMixin, ListView):
     model = Profile
     fields = '__all__'
@@ -81,11 +79,12 @@ class Profile(LoginRequiredMixin, ListView):
     template_name = 'profile/index.html'
     def get_queryset(self):
         queryset = UserEntries.objects.filter(user=self.request.user)
+        queryset = UserEntries.objects.order_by('-date')
         return queryset
 
 class EntryCreate(LoginRequiredMixin, CreateView):
     model = UserEntries
-    fields = ('in_the_future', 'title_of_that_future', 'tags','optional_image', 'optional_video' )
+    fields = ('in_the_future', 'title_of_that_future', 'relevant_link','tags','optional_image', 'optional_video' )
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -105,7 +104,7 @@ class AddCommentView(CreateView):
 class EntryUpdate(LoginRequiredMixin, UpdateView):
   model = UserEntries
   # Let's disallow the renaming of a cat by excluding the name field!
-  fields = ['in_the_future', 'title_of_that_future', 'tags','optional_image', 'optional_video' ]
+  fields = ['in_the_future', 'title_of_that_future',   'relevant_link', 'tags','optional_image', 'optional_video' ]
 
 class EntryDelete(LoginRequiredMixin, DeleteView):
     model = UserEntries
