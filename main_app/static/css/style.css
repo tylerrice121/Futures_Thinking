@@ -112,4 +112,24 @@ footer {
     align-content: center;
     text-align: center;
 }
+.bigcontainer{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
 
+.formcontainer{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    align-content: center;
+    justify-self: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.formcontainer .addpost{
+    text-align: center;
+}
