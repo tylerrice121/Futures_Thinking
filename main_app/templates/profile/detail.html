@@ -4,19 +4,22 @@
 
 <div class="cards">
 
-  <div class="card col s3">
-    <h4>{{entry.title_of_that_future}}</h4>
-    <p>Posted/updated: {{entry.date}} by {{entry.user}} </p>
+  <div class="card col s4">
+    <h4 class="cardTitle">{{entry.title_of_that_future}}</h4>
+    <p>{{entry.date}} by {{entry.user}} </p>
+    <br/>
     <p class="cardBody">{{entry.in_the_future}}</p>
     <div class="card-action">
       <!-- <img src="{{entry.optional_image}}" alt="{{entry.title_of_that_future}}"> -->
       {% if request.user == entry.user %}
       {% video entry.optional_video 'medium' %}
-      <a href="{% url 'entry_update' entry.id %}">Edit</a>
-      <a href="{% url 'entry_delete' entry.id %}">Delete</a>
+      <div class="cardBottom">
+        <a href="{% url 'entry_update' entry.id %}">Edit</a>
+        <a href="{% url 'entry_delete' entry.id %}">Delete</a>
+      </div>
     </div>
-    {% endif %}
   </div>
+  {% endif %}
   <div class="card col s3">
     <h4>Comments...</h4>
     <br />
