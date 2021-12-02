@@ -2,71 +2,42 @@
 {% load embed_video_tags %}
 {% block content %}
 
-
-
-<a href="{% url 'entry_update' entry.id %}">Edit</a>
-       
-<a href="{% url 'entry_delete' entry.id %}">Delete</a>
-<h1>Details of  {{entry.title_of_that_future}}</h1>
-
-<div class="row">
- 
-    <div class="col s6 col-offset-3">
-          <p>{{entry.in_the_future}}</p>
-          
-       
-       
-
-          
-          <p></p>
-        
-          <p>Posted/updated: {{entry.date}} by {{entry.user}} </p>
-    
-        <div class="card-action">
-            <p>  <img src="{{entry.optional_image}}" alt="{{entry.title_of_that_future}}"></p>
-          
-            {% video entry.optional_video 'medium' %}
-            {% if request.user == entry.user %}
-        
-          
-
-
-
-<br/>
-           
-        
-          </div>
-       
-          {% endif %}
+<div class="cards">
+    <br/>
+    <p class="cardBody">{{entry.in_the_future}}</p>
+    <div class="card-action">
+      <!-- <img src="{{entry.optional_image}}" alt="{{entry.title_of_that_future}}"> -->
+      {% if request.user == entry.user %}
+      {% video entry.optional_video 'medium' %}
+      <div class="cardBottom">
+        <a href="{% url 'entry_update' entry.id %}">Edit</a>
+        <a href="{% url 'entry_delete' entry.id %}">Delete</a>
       </div>
-<hr/>
-      <h2>Comments...</h2>
-      <br/>
-
-      {% if not entry.comments.all %}
-      No Comments Yet...
-      <br/>
-      {% else %}
-      <a href="{% url 'add_comment' entry.pk %}">Add comment</a>
-
-      {% for comment in entry.comments.all %}
-      
-      <strong>
-        {{ comment.name }} - {{ comment.date_added }} 
-      </strong>
-      <br/>
-      {{ comment.body }}
-   <br/>
-      {% endfor %}
-      {% endif %}
-    
-    <br/>
-    <a href="{% url 'add_comment' entry.pk %}">Add comment</a>
-    <br/>
-     
-    
-  
     </div>
- 
   </div>
-  {% endblock %}
+  {% endif %}
+  <div class="card col s3">
+    <h4>Comments...</h4>
+    <br />
+
+    {% if not entry.comments.all %}
+    No Comments Yet...
+    <br />
+    {% else %}
+    <a href="{% url 'add_comment' entry.pk %}">Add comment</a>
+    {% for comment in entry.comments.all %}
+    <strong>
+      {{ comment.name }} - {{ comment.date_added }}
+    </strong>
+    <br />
+    {{ comment.body }}
+    <br />
+    {% endfor %}
+    {% endif%}
+
+    <br />
+    <a href="{% url 'add_comment' entry.pk %}">Add comment</a>
+    <br />
+  </div>
+</div>
+{% endblock %}
