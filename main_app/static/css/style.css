@@ -21,10 +21,11 @@ body {
 
 
 main{
-
     flex-grow: 1;
     padding-left: 20px;
     padding-right: 20px;
+    padding-bottom: 20px;
+    width: 100%;
 }
 
 footer {
@@ -35,28 +36,71 @@ footer {
     padding-bottom: 10px;
 }
 
-.cards {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.card {
-    justify-self: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 250px;
-    width: 500px;
-    padding: 20px;
-    margin: 10px;
-}
 
 .button-home {
     justify-self: center;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+
+/* ======================================== FEED PAGE */
+
+.container{
+    /* margin: 0; */
+    width: 100%;
+}
+.cards {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.card {
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 350px;
+    width: 650px;
+    padding: 20px;
+    margin: 20px;
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+}
+
+.innercard {
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    height: 350px;
+    width: 450px;
+}
+
+.top{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tags{
+    justify-self: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.tag{
+    margin-left: 20px;
 }
