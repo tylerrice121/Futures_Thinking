@@ -95,10 +95,19 @@ class AddCommentView(CreateView):
     model = Comment
     template_name = 'profile/add_comment.html'
     fields = ('entry', 'name', 'body')
-    
+
+
+
     def form_valid(self, form):
-        form.instance.comment = self.request.comment
+        self.object = form.save(commit=False)
+        self.object.save()
+        # user = self.object.user.username
+        print(self.object, form.instance)
         return super().form_valid(form)
+    
+    # def form_valid(self, form):
+    #     form.instance.comment = self.request.comment
+    #     
    
 
 class EntryUpdate(LoginRequiredMixin, UpdateView):
