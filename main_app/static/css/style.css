@@ -13,10 +13,26 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    font-size: 2px;
 }
+
 
 .link {
     margin-left: 20px;
+}
+@media screen and (max-width: 768px){
+    .link{
+        font-size: 10px;
+        margin: 0;
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+    .homelink{
+        font-size: 10px;
+        margin: 0;
+        padding-left: 6px;
+        padding-right: 6px;
+    }
 }
 
 
@@ -28,12 +44,17 @@ main{
     width: 100%;
 }
 
-footer {
+footer, div{
     padding-top: 0;
-    text-align: right;
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 10px;
+}
+
+@media screen and (max-width: 768px){
+    footer, .right{
+        text-align: center;
+    }
 }
 
 
@@ -83,6 +104,18 @@ footer {
     width: 450px;
 }
 
+.cardBottom{
+    padding: 0;
+}
+@media screen and (max-width: 768px){
+    .card{
+        width: 350px;
+    }
+    .innercard{
+        width: 300px;
+    }
+}
+
 .top{
     display: flex;
     width: 100%;
@@ -102,7 +135,8 @@ footer {
     justify-content: center;
 }
 .tag{
-    margin-left: 20px;
+    margin-left: 10px;
+    margin-left: 10px;
 }
 
 .noposts{
@@ -128,6 +162,11 @@ footer {
     justify-self: center;
     justify-content: center;
     margin: 0;
+}
+@media screen and (max-width: 768px){
+    .formcontainer{
+        width: 375px;
+    }
 }
 
 .formcontainer, p{
