@@ -1,4 +1,4 @@
-from .forms import SignUpForm
+from .forms import SignUpForm, CommentForm
 from django.db.models.fields import SlugField
 from django.shortcuts import render
 from .models import Comment, UserEntries, Profile
@@ -94,20 +94,14 @@ class EntryCreate(LoginRequiredMixin, CreateView):
 class AddCommentView(CreateView):
     model = Comment
     template_name = 'profile/add_comment.html'
-    fields = ('entry', 'name', 'body')
-
-
-
-    def form_valid(self, form):
-        self.object = form.save(commit=False)
-        self.object.save()
-        # user = self.object.user.username
-        print(self.object, form.instance)
-        return super().form_valid(form)
+    form_class = CommentForm
+    #fields = ('entry', 'name', 'body')
+  
     
-    # def form_valid(self, form):
-    #     form.instance.comment = self.request.comment
-    #     
+    def form_valid(self, form):
+        form.instance.entry_id = self.kwargs['pk']
+        return super().form_valid(form)
+    success_url = 'detail.html'
    
 
 class EntryUpdate(LoginRequiredMixin, UpdateView):

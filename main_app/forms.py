@@ -24,13 +24,17 @@ class ProfileForm(forms.ModelForm):
             'bio',
         ]
 
-class CommentsForm(forms.ModelForm):
+class CommentForm(forms.ModelForm):
   class Meta:
     model = Comment
-    fields = [
+    fields = (
         'name',
-        'body',
-    ]
+        'body')
+
+    widgets = {
+        'name': forms.TextInput(),
+        'body': forms.Textarea(),
+        }
 
 
 class SignUpForm(UserCreationForm):
