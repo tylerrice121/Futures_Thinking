@@ -59,7 +59,7 @@ class TagMixin(object):
         context['tags'] = Tag.objects.all()
         return context
 
-class Feed(TagMixin, ListView):
+class Feed(LoginRequiredMixin, TagMixin, ListView):
     queryset = UserEntries.objects.order_by('-date')
     model = UserEntries
     template_name = 'feed.html'

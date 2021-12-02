@@ -25,10 +25,10 @@
                     </li>
                 </ul>
                 <ul class="links">
+                    {% if user.is_authenticated %}
                     <li>
                         <a href="{% url 'feed' %}" class='link'>Futures</a>
                     </li>
-                    {% if user.is_authenticated %}
                     <li>
                         <a href="{% url 'profile' %}"class='link'>My Futures</a>
                     </li>
