@@ -1,18 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<!-- {% if object %} -->
-<h1>Update {{object.name}}</h1>
-<!-- {% else %} -->
-<h1>Imagine a future on the edge of the possible completing the the thought "In the future..." </h1>
-<!-- {% endif %} -->
-<form action="" method="post">
-    <table></table>
-    {% csrf_token %}
-    
-        {{ form.as_p }}
-    </table>
-    <input class="btn blue" type="submit" value="{%if object%} Update Post {%else%} Add Post {%endif%}">
-</form>
+<div class="bigcontainer">
+    <div class="formcontainer">
+        {% if object %}
+        <h3>Update {{object.name}}</h3>
+        {% else %}
+        <h5>Imagine a future on the edge of the possible completing the the thought "In the future..." </h5>
+        {% endif %}
+        <form action="" method="post">
+            <table></table>
+            {% csrf_token %}
+                {{ form.as_p }}
+            </table>
+            <input class="btn blue addpost" type="submit" value="{%if object%} Update Post {%else%} Add Post {%endif%}">
+        </form>
+    </div>
+</div>
 
 {% endblock %}
