@@ -77,9 +77,9 @@ class AddProfile(LoginRequiredMixin, ListView):
 class Profile(LoginRequiredMixin, ListView):
     model = UserEntries
     template_name = 'profile/index.html'
+
     def get_queryset(self):
         queryset = UserEntries.objects.filter(user=self.request.user)
-        queryset = UserEntries.objects.order_by('-date')
         return queryset
 
 class EntryCreate(LoginRequiredMixin, CreateView):
