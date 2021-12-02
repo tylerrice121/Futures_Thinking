@@ -1,25 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
 
-{% if object %}
+<!-- {% if object %} -->
 <h1>Update {{object.name}}</h1>
-{% else %}
+<!-- {% else %} -->
 <h1>Imagine a future on the edge of the possible completing the the thought "In the future..." </h1>
-{% endif %}
+<!-- {% endif %} -->
 <form action="" method="post">
+    <table></table>
     {% csrf_token %}
-    <table>
-        {{ form.as_table }}
+    
+        {{ form.as_p }}
     </table>
     <input class="btn blue" type="submit" value="{%if object%} Update Post {%else%} Add Post {%endif%}">
 </form>
-<script>
-    const dateEl = document.getElementById('id_date');
-    M.Datepicker.init(dateEl, {
-        format: 'yyyy-mm-dd',
-        defaultDate: new Date(),
-        setDefaultDate: true,
-        autoClose: true
-    });
-</script>
+
 {% endblock %}
