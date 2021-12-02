@@ -34,7 +34,7 @@ class Comment(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return '%s - %s ' % (self.entry.title_of_that_future, self.name)
+        return '%s - %s' % (self.entry.title_of_that_future, self.name)
 
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=CASCADE)
