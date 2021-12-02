@@ -1,7 +1,7 @@
 from .forms import SignUpForm
 from django.db.models.fields import SlugField
 from django.shortcuts import render
-from .models import UserEntries
+from .models import Comment, UserEntries, Profile
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.shortcuts import render, redirect
@@ -11,16 +11,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from taggit.models import Tag
 
 
-class TagMixin(object):
-    def get_context_data(self, **kwargs):
-        context =super(TagMixin,self).get_context_data(**kwargs)
-        context['tags'] = Tag.objects.all()
-        return context
 
-
-
-
-# Create your views here.
 
 def home(request):
     return render(request, 'home.html')
@@ -42,7 +33,7 @@ def signup(request):
             # this creates a session entry in the database
             login(request, user)
             # # and it persists that session sitewide until the user logs out
-            return redirect('feed')
+            return redirect('profile')
         else:
             error_message = 'invalid data - please try again'
     # this is for GET requests, assuming our user clicked on "signup" from the navbar
@@ -50,26 +41,44 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
-class Feed(TagMixin, ListView):
-    queryset = UserEntries.objects.order_by('-date')
-    model = UserEntries
-    template_name = 'feed.html'
-  
+
 
 class TagIndexView(ListView):
     # queryset = UserEntries.objects.all()
     model = UserEntries
     template_name = 'feed.html'
+
     # context_object_name = 'posts'
    
     def get_queryset(self):
        return UserEntries.objects.filter(tags__slug=self.kwargs.get('tags_slug'))
 
-      
+class TagMixin(object):
+    def get_context_data(self, **kwargs):
+        context =super(TagMixin,self).get_context_data(**kwargs)
+        context['tags'] = Tag.objects.all()
+        return context
+
+class Feed(TagMixin, ListView):
+    queryset = UserEntries.objects.order_by('-date')
+    model = UserEntries
+    template_name = 'feed.html'
+
+
+
+
+class AddProfile(LoginRequiredMixin, ListView):
+    model = Profile
+    fields = '__all__'
+    template_name = 'main_app/profile_form.html'
+
+    def form_valid(self, form):
+        form.instance.profile = self.request.profile
+        return super().form_valid(form)
+
 class Profile(LoginRequiredMixin, ListView):
     model = UserEntries
     template_name = 'profile/index.html'
-
     def get_queryset(self):
         queryset = UserEntries.objects.filter(user=self.request.user)
         return queryset
@@ -81,6 +90,17 @@ class EntryCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+
+class AddCommentView(CreateView):
+    model = Comment
+    template_name = 'profile/add_comment.html'
+    fields = ('entry', 'name', 'body')
+    
+    def form_valid(self, form):
+        form.instance.comment = self.request.comment
+        return super().form_valid(form)
+   
 
 class EntryUpdate(LoginRequiredMixin, UpdateView):
   model = UserEntries

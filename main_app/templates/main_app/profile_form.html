@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+{{user.profile.bio}}
+{% block content %}
+ 
+  <h4>{{user}}'s Bio:</h4>{{user.profile.bio}}
+  <!-- <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" value=''>submit</button>
+  </form> -->
+{% endblock %}
