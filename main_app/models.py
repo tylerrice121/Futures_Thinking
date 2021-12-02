@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
+from django.db.models.fields import NullBooleanField
 from django.urls import reverse
 from django.contrib.auth.models import User
 from embed_video.fields import EmbedVideoField
@@ -10,6 +11,7 @@ class UserEntries(models.Model):
  
     in_the_future = models.TextField() 
     title_of_that_future = models.CharField(max_length=350)
+    relevant_link = models.URLField(max_length=350)
     tags = TaggableManager()
     # slug = models.SlugField(unique=True, max_length=100)
     optional_image = models.CharField(max_length=250, blank=True)

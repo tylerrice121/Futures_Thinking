@@ -10,6 +10,7 @@ class PostForm(forms.ModelForm):
             'in_the_future',
             'title_of_that_future',
             'tags',
+            'relevant_link',
             'optional_image',
             'optional_video',
             
