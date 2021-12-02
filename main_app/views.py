@@ -96,12 +96,13 @@ class AddCommentView(CreateView):
     template_name = 'profile/add_comment.html'
     form_class = CommentForm
     #fields = ('entry', 'name', 'body')
-  
+    success_url = '/feed/'
     
     def form_valid(self, form):
         form.instance.entry_id = self.kwargs['pk']
         return super().form_valid(form)
-    success_url = 'detail.html'
+
+       
    
 
 class EntryUpdate(LoginRequiredMixin, UpdateView):
