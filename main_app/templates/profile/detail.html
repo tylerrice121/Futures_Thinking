@@ -10,9 +10,8 @@
     <br/>
     <p class="cardBody">{{entry.in_the_future}}</p>
     <div class="card-action">
-      <!-- <img src="{{entry.optional_image}}" alt="{{entry.title_of_that_future}}"> -->
       {% if request.user == entry.user %}
-      {% video entry.optional_video 'medium' %}
+      {% comment %} {% video entry.optional_video 'medium' %} {% endcomment %}
       <div class="cardBottom">
         <a href="{% url 'entry_update' entry.id %}">Edit</a>
         <a href="{% url 'entry_delete' entry.id %}">Delete</a>
@@ -28,7 +27,7 @@
     No Comments Yet...
     <br />
     {% else %}
-    <a href="{% url 'add_comment' entry.pk %}">Add comment</a>
+
     {% for comment in entry.comments.all %}
     <strong>
       {{ comment.name }} - {{ comment.date_added }}
@@ -38,6 +37,9 @@
     <br />
     {% endfor %}
     {% endif%}
+    <br />
+    <a href="{% url 'add_comment' entry.pk %}">Add comment</a>
+    <br />
   </div>
 </div>
 {% endblock %}
