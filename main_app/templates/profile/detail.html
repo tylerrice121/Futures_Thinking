@@ -3,65 +3,35 @@
 {% block content %}
 
 
-
-<a href="{% url 'entry_update' entry.id %}">Edit</a>
-       
-<a href="{% url 'entry_delete' entry.id %}">Delete</a>
-<h1>Details of  {{entry.title_of_that_future}}</h1>
-
-<div class="row">
- 
-    <div class="col s6 col-offset-3">
-          <p>{{entry.in_the_future}}</p>
-          <p></p>
-        
-          <p>Posted/updated: {{entry.date}} by {{entry.user}} </p>
-    
-        <div class="card-action">
-            <p>  <img src="{{entry.optional_image}}" alt="{{entry.title_of_that_future}}"></p>
-          
-            {% video entry.optional_video 'medium' %}
-            {% if request.user == entry.user %}
-        
-          
-
-
-
-<br/>
-           
-        
-          </div>
-       
-          {% endif %}
+<div class="cards detailcards">
+  <div class="card col s4 detailcard">
+    <h4 class="cardTitle">{{entry.title_of_that_future}}</h4>
+    <p style="color: gray; font-size: 12px">{{entry.date}} by {{entry.user}} </p>
+    <p class="cardBody">In the future {{entry.in_the_future}}</p>
+    <div class="card-action">
+      {% video entry.optional_video 'small' %}
+      {% if request.user == entry.user %}
+      <div class="cardBottom">
+        <a href="{% url 'entry_update' entry.id %}" style="margin-left: 24px">Edit</a>
+        <a href="{% url 'entry_delete' entry.id %}" style="margin-left: 24px">Delete</a>
       </div>
-<hr/>
-      <h2>Comments...</h2>
-      <br/>
-
+    </div>
+    {% endif %}
+    <div class="card-action commentsection">
+      <h5>Comments</h5>
       {% if not entry.comments.all %}
       No Comments Yet...
-      <br/>
       {% else %}
-      <a href="{% url 'add_comment' entry.pk %}">Add comment</a>
-
       {% for comment in entry.comments.all %}
-      
-      <strong>
-        {{ comment.name }} - {{ comment.date_added }} 
-      </strong>
-      <br/>
+      <p style="color: gray; font-size: 12px; margin-bottom: 0px; margin-top: 5px;">
+        {{ comment.name }} - {{ comment.date_added }}
+      </p>
       {{ comment.body }}
-   <br/>
       {% endfor %}
-      {% endif %}
-    
-    <br/>
-    <a href="{% url 'add_comment' entry.pk %}">Add comment</a>
-    <br/>
-     
-    
-  
+      {% endif%}
+      <a href="{% url 'add_comment' entry.pk %}" style="margin-right: 0; margin-top: 10px;">Add comment</a>
     </div>
- 
   </div>
-  {% endblock %}
+
+</div>
+{% endblock %}
