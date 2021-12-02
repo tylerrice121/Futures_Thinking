@@ -18,20 +18,23 @@ class PostForm(forms.ModelForm):
 
 
 class ProfileForm(forms.ModelForm):
-      class Meta:
+  class Meta:
         model = Profile
         fields = [
             'bio',
         ]
 
-class CommentsForm(forms.ModelForm):
-      class Meta:
-        model = Comment
-        fields = [
-            'entry',
-            'name',
-            'body',
-        ]
+class CommentForm(forms.ModelForm):
+  class Meta:
+    model = Comment
+    fields = (
+        'name',
+        'body')
+
+    widgets = {
+        'name': forms.TextInput(),
+        'body': forms.Textarea(),
+        }
 
 
 class SignUpForm(UserCreationForm):
