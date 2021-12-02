@@ -130,6 +130,16 @@ footer {
     margin: 0;
 }
 
-.formcontainer .addpost{
+.formcontainer, p{
+    margin-bottom: 10px !important;
+}
+
+.formtitle{
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.btndiv{
+    margin-top: 20px;
     text-align: center;
 }

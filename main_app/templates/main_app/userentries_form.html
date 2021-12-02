@@ -4,16 +4,22 @@
 <div class="bigcontainer">
     <div class="formcontainer">
         {% if object %}
-        <h3>Update {{object.name}}</h3>
+        <div class="formtitle">
+            <h3>Update {{object.name}}</h3>
+        </div>
         {% else %}
-        <h5>Imagine a future on the edge of the possible completing the the thought "In the future..." </h5>
+        <div class="formtitle">
+            <h5>Imagine a future on the edge of the possible completing the the thought "In the future..." </h5>
+        </div>
         {% endif %}
         <form action="" method="post">
-            <table></table>
+            <table>
             {% csrf_token %}
                 {{ form.as_p }}
             </table>
-            <input class="btn blue addpost" type="submit" value="{%if object%} Update Post {%else%} Add Post {%endif%}">
+            <div class="btndiv">
+                <input class="btn blue addpost" type="submit" value="{%if object%} Update Post {%else%} Add Post {%endif%}">
+            </div>
         </form>
     </div>
 </div>
