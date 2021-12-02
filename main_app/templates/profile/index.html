@@ -1,20 +1,29 @@
 {% extends 'base.html' %}
-
 {% block content %}
-
-<h1>My Futures</h1>
+<div class="top">
+    <h3 class="title">My Futures</h3>
+</div>
+{% if object_list %}
 <div class="cards">
     {% for post in object_list %}
-    <div class="card">
-      
-            <div>
-                <a href="{% url 'detail' post.id %}"> <h4>{{ post.title_of_that_future }}</h4>  </a>
-           
-                <p>{{ post.in_the_future }}</p>
-                
-                <p>Created on {{ post.date }} by {{post.user}}</p>
+    <div class="card col s3">
+        <div class="innercard">
+            <a class="cardTitle"href="{% url 'detail' post.id %}">
+                <h5>{{ post.title_of_that_future }}</h5>
+            </a>
+            <h6 class="cardBody">In the future {{post.in_the_future}}</h6>
+            <div class="cardBottom">
+                <p>Created on {{ post.date }}</p>
+                <p>{{post.user}}</p>
             </div>
         </div>
+    </div>
     {% endfor %}
 </div>
+{%else%}
+<div class="noposts">
+    <h5>You haven't posted anything yet!</h5>
+    <a href="{% url 'entry_create' %}"><h5>Add a Future</h5></a>
+</div>
+{% endif %}
 {% endblock %}

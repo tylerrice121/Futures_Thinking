@@ -11,7 +11,7 @@ class UserEntries(models.Model):
  
     in_the_future = models.TextField() 
     title_of_that_future = models.CharField(max_length=350)
-    relevant_link = models.URLField(max_length=350)
+    relevant_link = models.URLField(max_length=350, blank=True)
     tags = TaggableManager()
     # slug = models.SlugField(unique=True, max_length=100)
     optional_image = models.CharField(max_length=250, blank=True)
