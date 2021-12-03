@@ -50,6 +50,14 @@ After authentication, the user can  create, read a stream of ideas of all users 
 * User can delete and update comments.
 * Social Media sharing buttons.
 
+### Trello Board:
+
+https://trello.com/b/HFvipdLZ/project-four-planning
+
+### Pitch Deck:
+
+https://docs.google.com/presentation/d/1SSoQJiuQ35CwiNoZxqhHPsg7fBHiLESpgX9TvVTSotM/edit?usp=sharing
+
 ### Development Team:
 
 
