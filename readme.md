@@ -7,7 +7,7 @@ We were inspired by the Futures Thinking discipline, as an approach to creative 
 
 After authentication, the user can  create, read a stream of ideas of all users and its own. The users can leave comments in each others 'Futures'. The entries are sorted by user generated tags and they can also add a titles, videos and links. The user can edit and delete their entries.
 
-![This is a alt text.](main_app/static/images/img-app-1.png "This is a sample image.")
+![This is a alt text.](main_app/static/images/home.png "This is a sample image.")
 
 ### Technologies Used
 
