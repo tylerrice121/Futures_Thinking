@@ -36,7 +36,6 @@ After authentication, the user can  create, read a stream of ideas of all users 
 
 ### Getting Started
 
-* 
 * Create an account (signup and login)
 * Access to all entries and each other's entries.
 * Create, update and delete its own entries
