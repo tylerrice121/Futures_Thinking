@@ -9,9 +9,14 @@
     <p style="color: gray; font-size: 12px">{{entry.date}} by {{entry.user}} </p>
     <p class="cardBody">In the future {{entry.in_the_future}}</p>
     <div class="card-action">
-      {% video entry.optional_video 'small' %}
+      <div class="normal">
+        {% video entry.optional_video 'small' %}
+      </div>
+      <div class="tiny">
+        {% video entry.optional_video '200x150' %}
+      </div>
       {% if request.user == entry.user %}
-      <div class="cardBottom">
+      <div class="cardBottommine">
         <a href="{% url 'entry_update' entry.id %}" style="margin-left: 24px">Edit</a>
         <a href="{% url 'entry_delete' entry.id %}" style="margin-left: 24px">Delete</a>
       </div>

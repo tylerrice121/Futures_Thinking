@@ -230,6 +230,12 @@ footer, div{
     flex-direction: column;
     justify-content: space-between;
 }
+@media screen and (max-width: 768px){
+    .detailcard{
+        width: 400px;
+    }
+
+}
 .detailcards{
     margin-top: 50px;
     justify-self: center;
@@ -245,4 +251,17 @@ footer, div{
     padding: 0;
     display: flex;
     justify-content: space-between;
+}
+
+.tiny{
+    display: none
+}
+
+@media screen and (max-width: 768px){
+    .normal{
+        display: none;
+    }
+    .tiny{
+        display: flex;
+    }
 }
