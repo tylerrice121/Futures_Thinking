@@ -241,7 +241,8 @@ footer, div{
     width: 100%;
     text-align: center;
 }
-.cardBottom{
+.cardBottommine{
+    padding: 0;
     display: flex;
     justify-content: space-between;
 }
