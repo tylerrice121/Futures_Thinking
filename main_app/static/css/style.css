@@ -45,7 +45,9 @@ img{
         padding: 0;
     }
     img{
-        display: none;
+       width: 400px;
+            align-self: center;
+        
     }
 }
 .nav-wrapper{
@@ -92,8 +94,11 @@ footer, div{
 
 @media screen and (max-width: 768px){
     footer, .right{
-        text-align: center;
+       
+     text-align: center;
+   
     }
+    
 }
 
 
